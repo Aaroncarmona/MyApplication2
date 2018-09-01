@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+    <string name="bitacora">Bitacora</string>
+    <string name="number_dummy">999</string>
+    <string name="date_dummy">01/01/18 09:10:00 AM</string>
+    <string name="loading">Cargando...</string>
+    <string name="loading_number">--</string>
+    <string name="entrada">Entrada</string>
+    <string name="salida">Salida</string>
+    <string name="nodata">No hay información</string>
+    <string name="de_nuevo">De nuevo para salir</string>
+    <string name="error">Ha ocurrido un error</string>
+    <string name="dummy">kajdL lkad</string>
+    <string name="nota">Nota:</string>
+</resources>
