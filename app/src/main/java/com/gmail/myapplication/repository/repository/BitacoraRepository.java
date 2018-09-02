@@ -1,5 +1,6 @@
-package com.gmail.myapplication.repository;
+package com.gmail.myapplication.repository.repository;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.util.Log;
 import com.gmail.myapplication.repository.database.dao.IBitacoraDao;
 import com.gmail.myapplication.repository.database.AppDb;
 import com.gmail.myapplication.repository.database.entity.Bitacora;
+import com.gmail.myapplication.repository.network.HelperRequest;
 
 import java.util.List;
 
@@ -31,14 +33,12 @@ public class BitacoraRepository {
         return this.mBitacoras;
     }
 
-    public void insert( Bitacora bitacora ){
+    @SuppressLint("CheckResult")
+    public void insert(Bitacora bitacora ){
         //AL MOMENTO DE ENVIARLO Y NO PODER GUARDARLO EN LA PERSISTENCIA
-        Single.just(bitacora).subscribeOn(Schedulers.newThread())
-        .subscribe(
-            ( success ) -> {
-                mBitacoraDao.insert(success);
-            }, ( error ) -> {
-                Log.d(TAG , "no se inserto");
-            });
+
+        Single.just(bitacora)
+        .subscribeOn(Schedulers.newThread())
+        .subscribe( value -> this.mBitacoraDao.insert(value) , err -> Log.e(TAG , "no se inserto") );
     }
 }
