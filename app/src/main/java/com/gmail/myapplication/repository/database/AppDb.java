@@ -1,5 +1,6 @@
 package com.gmail.myapplication.repository.database;
 
+import android.annotation.SuppressLint;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
@@ -10,7 +11,9 @@ import android.support.annotation.NonNull;
 
 import com.gmail.myapplication.constant.ConstantDb;
 import com.gmail.myapplication.repository.database.dao.IBitacoraDao;
+import com.gmail.myapplication.repository.database.dao.IPokemonDao;
 import com.gmail.myapplication.repository.database.entity.Bitacora;
+import com.gmail.myapplication.repository.database.entity.Pokemon;
 
 import java.util.Date;
 
@@ -20,11 +23,15 @@ import io.reactivex.schedulers.Schedulers;
 
 @Database(
     entities = {
-        Bitacora.class
+        Bitacora.class,
+        Pokemon.class
     }, version = 1
 )
 public abstract class AppDb extends RoomDatabase {
+
     public abstract IBitacoraDao bitacoraDao();
+    public abstract IPokemonDao pokemonDao();
+
     private static AppDb INSTANCE;
 
     public static AppDb getDatabase(Context context){
@@ -42,6 +49,7 @@ public abstract class AppDb extends RoomDatabase {
     }
 
     private static RoomDatabase.Callback sRoomDatabaseCallback = new Callback() {
+        @SuppressLint("CheckResult")
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
@@ -49,11 +57,9 @@ public abstract class AppDb extends RoomDatabase {
                 .subscribeOn(Schedulers.newThread())
                 .subscribe( success  -> {
                 INSTANCE.bitacoraDao().deleteAll();
-                Bitacora b = new Bitacora();
-                b.setDate(new Date().toString());
-                b.setNota("habia un buen de trafico");
-                b.setTipo(0);
-                INSTANCE.bitacoraDao().insert(b);
+                INSTANCE.bitacoraDao()
+                    .insert( new Bitacora(new Date().toString()
+                     ,"Habia un buen de trafico", 0));
                 });
         }
     };

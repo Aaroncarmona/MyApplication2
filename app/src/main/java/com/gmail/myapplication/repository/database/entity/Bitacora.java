@@ -7,6 +7,13 @@ import com.gmail.myapplication.constant.ConstantDb;
 
 @Entity(tableName = ConstantDb.NAME_TABLE_BITACORA)
 public class Bitacora {
+
+    public Bitacora(String date, String nota, int tipo) {
+        this.date = date;
+        this.nota = nota;
+        this.tipo = tipo;
+    }
+
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String date;
