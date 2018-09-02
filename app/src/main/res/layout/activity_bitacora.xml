@@ -56,4 +56,13 @@
         </LinearLayout>
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/poke_name"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="@string/loading"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </android.support.design.widget.CoordinatorLayout>

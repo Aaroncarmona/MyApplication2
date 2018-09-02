@@ -13,4 +13,7 @@
     <string name="error">Ha ocurrido un error</string>
     <string name="dummy">kajdL lkad</string>
     <string name="nota">Nota:</string>
+    <string name="no_poke">No hay pokemones a mostrar</string>
+    <string name="sin_nota">Sin nota</string>
+    <string name="nota_descartada">Nota descartada</string>
 </resources>

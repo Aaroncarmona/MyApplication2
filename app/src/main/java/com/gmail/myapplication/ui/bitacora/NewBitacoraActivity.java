@@ -12,9 +12,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.gmail.myapplication.R;
+import com.gmail.myapplication.util.Util;
 
 public class NewBitacoraActivity extends AppCompatActivity {
-    public static final String EXTRA_REPLY = "com.gmail.myapplication.insertbitacora.REPLY";
     public static final String EXTRA_TIPO = "EXTRA_TIPO";
     public static final String EXTRA_NOTA = "EXTRA_NOTA";
 
@@ -33,12 +33,14 @@ public class NewBitacoraActivity extends AppCompatActivity {
         findViewById(R.id.fabSave).setOnClickListener( (View v ) ->{
             Intent replyIntent = new Intent();
             if (TextUtils.isEmpty(nota.getText().toString())){
+                Util.toast(getString(R.string.nota_descartada));
                 setResult(RESULT_CANCELED , replyIntent);
             }else{
                 String snota = nota.getText().toString();
                 int tipo = getIntent().getIntExtra(EXTRA_TIPO , -1);
                 replyIntent.putExtra(EXTRA_NOTA , snota);
                 replyIntent.putExtra(EXTRA_TIPO , tipo);
+
                 setResult(RESULT_OK , replyIntent);
             }
             finish();

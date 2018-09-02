@@ -23,13 +23,13 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:background="@color/primary_light"
             android:hint="@string/nota"
             android:layout_margin="15dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="15dp">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/tietnota"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
